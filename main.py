@@ -11,6 +11,8 @@ random.seed(-6789)
 cnn = ConnectionDB()
 
 while True:
+    cnn.GetOptionPlayers()
+    print("")
     print("")
     print("Que desea realizar")
     print(" 1) Jugar como invitado")
@@ -18,9 +20,15 @@ while True:
     print(" 3) Registrarse")
     print(" 4) Salir")
     opcion = int(input('Opcion: '))
+    
+    if opcion == 4:
+        cnn.DeletePlayers()
+
     menu = MenuFactory.ObtenerMenu(opcion)
 
     cnn.RegisterPlayer(opcion)
+
+
 
     if menu is not None:
         menu.Ejecutar()
